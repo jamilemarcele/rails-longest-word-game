@@ -1,0 +1,18 @@
+<h1>New Game</h1>
+
+<h3>
+  <% @letters.each do |letter| %>
+    <%= letter %>
+<% end %>
+</h3>
+
+<p>What is the longest word you can find?</p>
+<form action="/score" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letter_array, @letters %>
+  <input type="text" name="word">
+  <input type="submit" value="Play">
+</form>
+
+<!--=> <ActionController::Parameters {"authenticity_token"=>"YNhWTLeMpbMCO2Wuh1BO+UQs5EBcrW61OQf1PLdkxPUJ7h2v2Vh8vJFDhYmIWOKPL6mHnggHkTEahDeH5LPwnQ==", "question"=>"hello", "controller"=>"games", "action"=>"score"} permitted: false>-->
+<!--Line 11: Security to be sure the request is coming form our website-->
